@@ -1,0 +1,29 @@
+<form>
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <!-- <input type="email" id="form2Example1" class="form-control" /> -->
+      <input type="email" [(ngModel)]="id" name="id">
+      <label class="form-label" for="form2Example1">Email address</label>
+    </div>
+  
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <!-- <input type="password" id="form2Example2" class="form-control" /> -->
+      <input type="text" [(ngModel)]="pwd" name="pwd">
+      <label class="form-label" for="form2Example2">Password</label>
+    </div>
+  
+    <!-- 2 column grid layout for inline styling -->
+    <div class="row mb-4">
+      <div class="col d-flex justify-content-center">
+      </div>
+  
+      <div class="col">
+      </div>
+    </div>
+  
+    <!-- Submit button -->
+    <button class="btn btn-primary btn-block mb-4" (click)="itemClicked()"> Login </button>
+    <!-- <button type="button" class="btn btn-primary btn-block mb-4">Login</button> -->
+  
+</form>
