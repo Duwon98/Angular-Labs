@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,7 +11,7 @@ export class LoginComponent implements OnInit {
   pwd = "";
   db: string[][] = [["123@gmail.com","123"],["222@gmail.com","123"],["333@gmail.com","123"]];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -24,7 +26,7 @@ export class LoginComponent implements OnInit {
       }
     }
     if (login){
-      alert("Login!");
+      this.router.navigate(['/', 'account']);
 
     }else{
       alert("Faile!")
