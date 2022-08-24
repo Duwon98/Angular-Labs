@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
   }
   login(loginForm:NgForm){
     this.http.post('/api/auth', loginForm.value).subscribe((res:any)=> {
-      console.log(res)
       if(res == true){
         // If user successfully login, their login details will be saved in sessionStorage.
         if (typeof(Storage) !== "undefined"){
@@ -33,6 +32,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem("birthdate", loginForm.value.birthdate);
           sessionStorage.setItem("age", loginForm.value.age);
           sessionStorage.setItem("email", loginForm.value.email);
+          sessionStorage.setItem("valid", 'true');
           // Testing sessionStorage
           console.log("Welcome "+sessionStorage.getItem("name"));
         }
