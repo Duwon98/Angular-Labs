@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   name = "";
-  birthdate = "";
-  age = "";
-  email = "";
+  // birthdate = "";
+  // age = "";
+  // email = "";
   pwd = "";
   // db: string[][] = [["123@gmail.com","123"],["222@gmail.com","123"],["333@gmail.com","123"]];
 
@@ -22,17 +22,28 @@ export class LoginComponent implements OnInit {
     private router: Router
     ){ }
   ngOnInit(): void {
+    if(sessionStorage.getItem("name") != null){
+      alert("you already login!")
+      this.router.navigate(['/', 'account']);
+    } 
   }
   login(loginForm:NgForm){
     this.http.post('/api/auth', loginForm.value).subscribe((res:any)=> {
-      if(res == true){
+      if(res != false){
+        var userData = res;
         // If user successfully login, their login details will be saved in sessionStorage.
         if (typeof(Storage) !== "undefined"){
-          sessionStorage.setItem("name", loginForm.value.name);
-          sessionStorage.setItem("birthdate", loginForm.value.birthdate);
-          sessionStorage.setItem("age", loginForm.value.age);
-          sessionStorage.setItem("email", loginForm.value.email);
-          sessionStorage.setItem("valid", 'true');
+          // sessionStorage.setItem("name", loginForm.value.name);
+          // sessionStorage.setItem("birthdate", loginForm.value.birthdate);
+          // sessionStorage.setItem("age", loginForm.value.age);
+          // sessionStorage.setItem("email", loginForm.value.email);
+          // sessionStorage.setItem("valid", 'true');
+          sessionStorage.setItem("name", res.username);
+          sessionStorage.setItem("birthdate", res.birthdate);
+          sessionStorage.setItem("age", res.age);
+          sessionStorage.setItem("email", res.email);
+          sessionStorage.setItem("valid", res.valid);
+
           // Testing sessionStorage
           console.log("Welcome "+sessionStorage.getItem("name"));
         }

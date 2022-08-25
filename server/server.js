@@ -23,11 +23,13 @@ var check = require('./routes/check.js');
 app.post('/api/auth', (req, res)=>{
     // console.log(typeof(req.body));
     // console.log(req.body.birthdate);
-    var result = check(req.body.name, req.body.birthdate, parseInt(req.body.age), req.body.email, req.body.pwd);
+    // var result = check(req.body.name, req.body.birthdate, parseInt(req.body.age), req.body.email, req.body.pwd);
+    var result = check(req.body.name, req.body.pwd);
 
     // if result is not false
     if (result != false){
-        res.send(true);
+        // res.send(true);
+        res.send(result);
     }else{
         res.send(false);
     }
